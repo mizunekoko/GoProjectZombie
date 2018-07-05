@@ -6,7 +6,7 @@ public class BaceEnemyCharacter : MonoBehaviour {
 
 	public int _max_life;
 	public int _life_count;
-	public Collision _col;
+	public Collider _col;
 	public string _name;
 	private GameObject _head_name;
 	public List<string> _hit_position = new List<string>();
@@ -31,11 +31,14 @@ public class BaceEnemyCharacter : MonoBehaviour {
 		}
 	}
 
-	public void HitPosition(Collision col, string name, List<string> pos){
-		if(pos[_life_count] == name){
+	public void HitPosition(Collider col, string name, List<string> pos){
+		if(pos[_life_count] == name && col.gameObject.tag == "Bullet"){
 			_life_count++;
 		}
-		Destroy(col.gameObject);
+
+		if(col.gameObject.tag == "Bullet"){
+			Destroy(col.gameObject);
+		}
 		this.ThisDestroy();
 	}
 

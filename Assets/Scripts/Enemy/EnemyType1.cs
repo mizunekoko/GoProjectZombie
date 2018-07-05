@@ -20,11 +20,10 @@ public class EnemyType1 : BaceEnemyCharacter {
 		base.LookCamera();
 	}
 
-	public void Hit(Collision col, string name){
+	public void Hit(Collider col, string name){
 		base._col = col;
 		base._name = name;
 		base.HitPosition(base._col ,base._name, base._hit_position);
-		Debug.Log("col.gameObject.tag" + col.gameObject.tag);
 
 		if(col.gameObject.tag == "Player"){
 			_animator.SetInteger("State", 1);
